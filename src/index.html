@@ -13,5 +13,20 @@
 </head>
 <body>
   <app-root></app-root>
+
+  <script src="assets/scripts/jquery.min.js" type="text/javascript"></script>
+  <script src="assets/scripts/sb-admin-2.js"></script>
+  <script>
+    $(document).ready(() => {
+    var interval =  setInterval(
+        () => {
+          if($('#side-menu').length > 0){
+            $('#side-menu').metisMenu();
+            clearInterval(interval);
+          }        
+        }, 1000);
+    });
+
+  </script>
 </body>
 </html>

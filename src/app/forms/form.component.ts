@@ -5,9 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-export class FormComponent {
-  text: string;
-  constructor() {
+export class FormComponent{
+    constructor() {
 
-  }
+    }
 }

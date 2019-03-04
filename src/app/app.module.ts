@@ -5,22 +5,58 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormComponent } from './forms/form.component';
-import {InputTextModule} from 'primeng/inputtext';
+import { MenuComponent } from './menu/menu.component';
+import { AuthGuard } from './services/auth.guard';
+import { AuthService } from './services/auth.service';
+import { LoginComponent } from './login/login.component';
+import { HomeLayoutComponent } from './Layouts/home-layout.component';
+import { LoginLayoutComponent } from './Layouts/login-layout.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {InputTextModule} from 'primeng/inputtext';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  MatInputModule,
+  MatPaginatorModule,
+  MatProgressSpinnerModule,
+  MatSortModule,
+  MatTableModule,
+  MatIconModule,
+  MatButtonModule,
+  MatCardModule,
+  MatFormFieldModule } from "@angular/material";
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    FormComponent
+    FormComponent,
+    MenuComponent,
+    HomeLayoutComponent,
+    LoginLayoutComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    InputTextModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    InputTextModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
