@@ -1,59 +1,92 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
 import * as $ from 'jquery';
+import { AuthService } from '../services/auth.service';
+import { SharedService } from '../shared/sharedservice';
+import { MenuService } from './menu.service';
+import { IMenu } from '../models/menu';
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
+
 export class MenuComponent {
 
-  constructor(private auth: AuthService){
+  public menus: IMenu[];
 
+  constructor(private auth: AuthService, private shared: SharedService, private menusvc: MenuService) {
+    this.shared.title = "Dashboard"
   }
-  logout(){
+
+  logout() {
     this.auth.logout();
   }
+
+  ngAfterViewInit() {
+
+  }
+
   ngOnInit() {
-   // $('#side-menu').metisMenu();
-    $(window).bind("load resize", function () {
-      var topOffset = 50;
-      var width = (this.window.innerWidth > 0) ? this.window.innerWidth : this.screen.width;
-      if (width < 768) {
-        $('div.navbar-collapse').addClass('collapse');
-        topOffset = 100; // 2-row-menu
-      } else {
-        $('div.navbar-collapse').removeClass('collapse');
-      }
+    this.getMenus();
+    var self = this;
+    // $('.nav-item, .nav-link, .parentNav, .nav-link, .collapsed').on('click', function (e) {
+    //   self.shared.title = e.target.text;
+    //   console.log(e);
+    // })
 
-      var height = ((this.window.innerHeight > 0) ? this.window.innerHeight : this.screen.height) - 1;
-      height = height - topOffset;
-      if (height < 1) height = 1;
-      if (height > topOffset) {
-        $("#page-wrapper").css("min-height", (height) + "px");
+    // Toggle the side navigation
+    $('#sidebarToggle, #sidebarToggleTop').on('click', function (e) {
+      $('body').toggleClass('sidebar-toggled');
+      $('.sidebar').toggleClass('toggled');
+      if ($('.sidebar').hasClass('toggled')) {
+        $('.sidebar .collapse').collapse('hide');
       }
     });
-    var url = window.location;
-    var element = $('ul.nav a').filter(function () {
-      return this.href == url;
-    }).addClass('active').parent();
 
-    while (true) {
-      if (element.is('li')) {
-        element = element.parent().addClass('in').parent();
-      } else {
-        break;
-      }
-    }
+    // Close any open menu accordions when window is resized below 768px
+    $(window).resize(function () {
+      if ($(window).width() < 768) {
+        $('.sidebar .collapse').collapse('hide');
+      };
+    });
 
-    $("#sidebarToggle").on('click', function (e) {
-      $("#sidebar").toggle();
-      if ($("#sidebar").is(":visible")) {
-        $("#page-wrapper").css("margin-left", "250px");
-      } else {
-        $("#page-wrapper").css("margin-left", "0");
+    // Prevent the content wrapper from scrolling when the fixed side navigation hovered over
+    $('body.fixed-nav .sidebar').on('mousewheel DOMMouseScroll wheel', function (e) {
+      if ($(window).width() > 768) {
+        var e0 = e.originalEvent,
+          delta = e0.wheelDelta || -e0.detail;
+        this.scrollTop += (delta < 0 ? 1 : -1) * 30;
+        e.preventDefault();
       }
     });
+
+    // Scroll to top button appear
+    $(document).on('scroll', function () {
+      var scrollDistance = $(this).scrollTop();
+      if (scrollDistance > 100) {
+        $('.scroll-to-top').fadeIn();
+      } else {
+        $('.scroll-to-top').fadeOut();
+      }
+    });
+
+    // Smooth scrolling using jQuery easing
+    $(document).on('click', 'a.scroll-to-top', function (e) {
+      var $anchor = $(this);
+      $('html, body').stop().animate({
+        scrollTop: ($($anchor.attr('href')).offset().top)
+      }, 1000, 'easeInOutExpo');
+      e.preventDefault();
+    });
+  }
+
+  getMenus(): IMenu[] {
+    return this.menusvc.getMenus().subscribe(data => this.menus = data)[0];
+  }
+
+  pageHeader(header: any){
+    this.shared.title = header;
   }
 }

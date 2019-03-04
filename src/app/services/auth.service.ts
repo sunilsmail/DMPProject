@@ -22,7 +22,7 @@ export class AuthService {
       localStorage.setItem("loggedIn", "true");
       this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
       this.router.navigate([this.returnUrl]);
-      //this.router.navigate(['/dashboard']);
+      // this.router.navigate(['/dashboard']);
     }
   }
 

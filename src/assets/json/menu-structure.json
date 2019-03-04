@@ -1,0 +1,74 @@
+[
+    {
+        "labeltext": "Dashboard",
+        "icon": "fas fa-fw fa-tachometer-alt",
+        "routerlink": "dashboard",
+        "children": [],
+        "isdivideLine": true
+    },
+    {
+        "labeltext": "Admin",
+        "icon": "fas fa-fw fa-cog",
+        "routerlink": "admin",
+        "children": [],
+        "isdivideLine": true
+    },
+    {
+        "labeltext": "Demands",
+        "icon": "fas fa-fw fa-folder",
+        "dividername": "DEMAND SCREENS:",
+        "children": [
+            {
+                "labeltext": "Add Demand",
+                "routerlink": "demand"
+            },
+            {
+                "labeltext": "View Demand",
+                "routerlink": "demand/view"
+            }
+        ]
+    },
+    {
+        "labeltext": "Resources",
+        "icon": "fas fa-fw fa-folder",
+        "dividername": "RESOURCE SCREENS:",
+        "children": [
+            {
+                "labeltext": "Add Resource",
+                "routerlink": "resource"
+            },
+            {
+                "labeltext": "View Resource",
+                "routerlink": "resource/view"
+            },
+            {
+                "labeltext": "Allocate Resources",
+                "routerlink": "resource/allocate"
+            },
+            {
+                "labeltext": "Track Resource",
+                "routerlink": "resource/track"
+            }
+        ]
+    },
+    {
+        "labeltext": "Reports",
+        "icon": "fas fa-fw fa-chart-area",
+        "dividername": "REPORTS SCREENS:",
+        "isdivideLine": true,
+        "children": [
+            {
+                "labeltext": "Resource Status Report",
+                "routerlink": "reports"
+            },
+            {
+                "labeltext": "Demand Status Report",
+                "routerlink": "reports/demand"
+            },
+            {
+                "labeltext": "Resource Fullfill Report",
+                "routerlink": "reports/fullfill"
+            }
+        ]
+    }
+]

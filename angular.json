@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "DMP": {
+    "DMP-Admin2": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/DMP",
+            "outputPath": "dist/DMP-Admin2",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -23,21 +23,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "./node_modules/font-awesome/css/font-awesome.css",
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/assets/styles/metisMenu.min.css",
-              "src/assets/styles/sb-admin-2.css",
-              "node_modules/primeicons/primeicons.css",
               "node_modules/primeng/resources/themes/nova-light/theme.css",
-              "node_modules/primeng/resources/primeng.min.css"
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeicons/primeicons.css",
+              "src/styles.css"
             ],
-            "scripts": [
-              "./node_modules/jquery/dist/jquery.min.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "src/assets/scripts/metisMenu.js",
-              "src/assets/scripts/sb-admin-2.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -62,18 +53,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "DMP:build"
+            "browserTarget": "DMP-Admin2:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "DMP:build:production"
+              "browserTarget": "DMP-Admin2:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "DMP:build"
+            "browserTarget": "DMP-Admin2:build"
           }
         },
         "test": {
@@ -107,7 +98,7 @@
         }
       }
     },
-    "DMP-e2e": {
+    "DMP-Admin2-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -115,11 +106,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "DMP:serve"
+            "devServerTarget": "DMP-Admin2:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "DMP:serve:production"
+              "devServerTarget": "DMP-Admin2:serve:production"
             }
           }
         },
@@ -135,5 +126,5 @@
       }
     }
   },
-  "defaultProject": "DMP"
+  "defaultProject": "DMP-Admin2"
 }

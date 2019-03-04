@@ -1,8 +1,27 @@
-<div class="col-lg-12">
-  <h1 class="page-header">Forms</h1>
+<div class="admin_home minhgt550">
+  <ul class="admin_selection_list">
+    <li *ngFor="let item of items">
+      <div class="admin_sel_option v_middle" (onclick)="onClick(item.link)"><span>{{item.name}}</span></div>
+    </li>   
+  </ul>
 </div>
-<div class="row">
-  <h3 class="first">Basic</h3>
-  <input id="input" type="text" size="30" pInputText [(ngModel)]="text">
-  <span id="text">{{text}}</span>
+
+<div >
+Sample Data
+
 </div>
+
+<!-- <div id="container" class="cols">
+    <div class="box"  (onclick)="onClick(item.link)" *ngFor="let item of items">
+      <span>{{item.name}}</span></div>
+  </div> -->
+
+  <form [formGroup]="formGroup"> 
+
+      <label for="name">Name</label>
+      <input formControlName="name" id="name" [ccValidateInput]="{form: formGroup ,fieldName: 'name',displayname: 'Name is required'}" /><br>
+      <button class="btn btn-primary" (click)="validateAndSubmit()">Save</button>
+  </form>
+
+
+

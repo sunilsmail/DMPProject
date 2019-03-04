@@ -12,7 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeLayoutComponent } from './Layouts/home-layout.component';
 import { LoginLayoutComponent } from './Layouts/login-layout.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {InputTextModule} from 'primeng/inputtext';
+import { InputTextModule } from 'primeng/inputtext';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
@@ -24,7 +24,10 @@ import {
   MatIconModule,
   MatButtonModule,
   MatCardModule,
-  MatFormFieldModule } from "@angular/material";
+  MatFormFieldModule
+} from "@angular/material";
+import { ValidateInputDirective } from './shared/inputcontrol.validation.directive';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,13 +36,12 @@ import {
     MenuComponent,
     HomeLayoutComponent,
     LoginLayoutComponent,
-    LoginComponent
+    LoginComponent,
+    ValidateInputDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
     InputTextModule,
     BrowserModule,
     FormsModule,

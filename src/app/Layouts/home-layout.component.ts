@@ -4,11 +4,7 @@ import * as $ from 'jquery';
 @Component({
   selector: 'app-home-layout',
   template: `
-   <app-menu></app-menu>
-   <div id="page-wrapper">
-   <router-outlet></router-outlet>
-   </div>
-    
+   <app-menu></app-menu>    
   `,
   styles: []
 })

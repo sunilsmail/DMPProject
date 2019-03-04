@@ -8,21 +8,6 @@ import { HomeLayoutComponent } from './Layouts/home-layout.component';
 import { AuthGuard } from './services/auth.guard';
 
 
-
-// export const rootRouterConfig: Routes = [
-//     { path: '', redirectTo: 'login', pathMatch: 'full' },
-//     { path: 'login', component: DashboardComponent },
-//     { path: 'dashboard', component: DashboardComponent },
-//     { path: 'form', component: FormComponent },
-//     {
-//         path: 'demand',
-//         children: [
-//             { path: 'dashboard', component: DashboardComponent },
-//         ]
-//     },
-//     { path: '**', redirectTo: 'login', pathMatch: 'full' }
-// ];
-
 const routes: Routes = [
   {
     path: '',
@@ -31,7 +16,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: "dashboard", 
+        redirectTo: "dashboard",
         pathMatch: "full"
       },
       {
@@ -39,10 +24,21 @@ const routes: Routes = [
         component: DashboardComponent
       },
       {
-        path: 'form',
+        path: 'admin',
         component: FormComponent
+      },
+      {
+        path: 'demand',
+        loadChildren: './demand/demand.module#DemandModule'
+      },
+      {
+        path: 'resource',
+        loadChildren: './resource/resource.module#ResourceModule'
+      },
+      {
+        path: 'reports',
+        loadChildren: './reports/report.module#ReportsModule'
       }
-
     ]
   },
   {
